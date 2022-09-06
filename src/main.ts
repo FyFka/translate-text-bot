@@ -1,14 +1,13 @@
-import dotenv from "dotenv";
 import TelegramApi from "node-telegram-bot-api";
+import { BOT_TOKEN } from "./constants.js";
 import { Handlers } from "./handlers.js";
-dotenv.config();
 
 class Main {
   api: TelegramApi;
   handlers: Handlers;
 
   constructor() {
-    this.api = new TelegramApi(process.env.BOT_TOKEN || "EMPTY_TOKEN", { polling: true });
+    this.api = new TelegramApi(BOT_TOKEN, { polling: true });
     this.handlers = new Handlers(this.api);
   }
 }
